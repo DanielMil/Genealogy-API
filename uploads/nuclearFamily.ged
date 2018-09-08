@@ -1,0 +1,99 @@
+0 HEAD
+1 SOUR webtreeprint.com
+2 VERS 1.0
+2 NAME webtreeprint
+1 FILE shakespeare.ged
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+1 SUBM @SUB1@
+0 @SUB1@ SUBM
+1 NAME webTreePrint
+0 @I0001@ INDI
+1 NAME William /Shakespeare/
+2 GIVN William
+2 SURN Shakespeare
+1 SEX M
+1 BIRT
+2 DATE BEF 23 APR 1564
+2 PLAC Stratford-upon-Avon
+1 CHR
+2 DATE 26 APR 1564
+2 PLAC Stratford-upon-Avon
+1 DEAT
+2 DATE 23 APR 1616
+2 PLAC Stratford-upon-Avon
+1 FAMS @F001@
+0 @I0002@ INDI
+1 NAME Anne /Hathaway/
+2 GIVN Anne
+2 SURN Hathaway
+1 SEX F
+1 BIRT
+2 DATE APR 1556
+2 PLAC Shottery, Warwickshire
+1 DEAT
+2 DATE 06 AUG 1623
+2 PLAC Stratford-upon-Avon
+1 FAMS @F001@
+0 @I0003@ INDI
+1 NAME Susanna /Shakespeare/
+2 GIVN Susanna
+2 SURN Shakespeare
+1 SEX F
+1 BIRT
+2 DATE MAY 1583
+2 PLAC Stratford-upon-Avon
+1 CHR
+2 DATE 26 MAY 1583
+2 PLAC Stratford-upon-Avon
+1 DEAT
+2 DATE 11 JUL 1649
+2 PLAC Stratford-upon-Avon
+1 FAMC @F001@
+0 @I0004@ INDI
+1 NAME Hamnet /Shakespeare/
+2 GIVN Hamnet
+2 SURN Shakespeare
+1 SEX M
+1 BIRT
+2 DATE JAN 1585
+2 PLAC Stratford-upon-Avon
+1 CHR
+2 DATE 02 FEB 1585
+2 PLAC Stratford-upon-Avon
+1 DEAT
+2 DATE AUG 1596
+2 PLAC Stratford-upon-Avon
+1 BURI
+2 DATE 11 AUG 1596
+2 PLAC Stratford-upon-Avon
+1 FAMC @F001@
+0 @I0005@ INDI
+1 NAME Judith /Shakespeare/
+2 GIVN Judith
+2 SURN Shakespeare
+1 SEX F
+1 BIRT
+2 DATE JAN 1585
+2 PLAC Stratford-upon-Avon
+1 CHR
+2 DATE 02 FEB 1585
+2 PLAC Stratford-upon-Avon
+1 DEAT
+2 DATE FEB 1662
+2 PLAC Stratford-upon-Avon
+1 BURI
+2 DATE 09 FEB 1662
+2 PLAC Stratford-upon-Avon
+1 FAMC @F001@
+0 @F001@ FAM
+1 HUSB @I0001@
+1 WIFE @I0002@
+1 MARR
+2 DATE NOV 1582
+1 CHIL @I0003@
+1 CHIL @I0004@
+1 CHIL @I0005@
+0 TRLR

@@ -1,0 +1,20 @@
+{
+  "name": "a3",
+  "version": "1.0.0",
+  "description": "CIS2750 W18 - A3",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "express-fileupload": "^0.4.0",
+    "ffi": "^2.2.0",
+    "http": "0.0.0",
+    "javascript-obfuscator": "^0.14.3",
+    "mysql": "^2.15.0",
+    "nodemon": "^1.15.1"
+  }
+}

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Genealogy | Welcome</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Genealogy API for CIS*2750">
+    <meta name="keywords" content="Genealogy">
+    <meta name="author" content="Daniel Mil">
+    <!-- Load jquery, bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Custom CSS End -->
+</head>
+<body>
+    <div id="myModal" class="modal">
+
+  <!-- Modal content -->
+    <div class="modal-content">
+      <div class="database-login">
+        <h1>Database Connectivity</h1>
+        <form id="login">
+
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Username">
+          </div>
+
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password">
+          </div>
+
+          <div class="form-group">
+            <label>Database Name</label>
+            <input type="text" class="form-control" id="db-name" placeholder="Database name">
+          </div>
+
+          <button type="submit" class="btn btn-info close">Submit</button>
+          <p id="modal-status">Status:</p>
+        </form>
+      </div>
+    </div>
+
+    </div>
+
+     <div class="bg" class="container-own">
+
+      <h1>CIS*2750 Genealogy API</h1>
+      <h2>This genealogy API is written for a computer science course at the University of Guelph. It uses the GEDCOM file format to generate and analyse family tree objects. The API can do the following:</h2>
+      <nav>
+        <ul>
+          <li>Produce a GEDCOM file from a GEDCOM object</li>
+          <li>Produce a GEDCOM object from a GEDCOM file</li>
+          <li>Get a list of ancestors and descendants</li>
+          <li>Add indiviudals to the GEDCOM object</li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="container-own">
+
+      <div class="status-panel">
+        <label>Status</label>
+        <textarea id="status" class="form-control" placeholder="Status" readonly></textarea>
+        <button id="clear" class="btn btn-info">Clear</button>
+      </div>
+
+      <hr>
+      
+      <div class="view-panel">
+
+        <h3>View GEDCOM</h3>
+
+        <div class="form-group">
+          <label>Choose a file:</label>
+          <select id="getIndividual" class="form-control">
+            <option value="" selected disabled hidden>Select a File</option>
+          </select>
+        </div>
+
+        <p id="view-status">Status:</p>
+
+        <table id="indTable" class="table table-striped table-bordered table-hover table-condensed">
+          <tr>
+            <th>Given Name</th>
+            <th>Surname</th>
+            <th>Sex</th>
+            <th>Family Size</th>
+          </tr>
+        </table>
+      </div>
+
+      <hr>
+
+      <div class="log-panel">
+
+        <h3>File Log</h3>
+
+        <p id="log-status">Status:</p>
+
+        <table id="flog" class="table table-striped table-bordered table-hover table-condensed">
+          <tr>
+            <th>File Name (Click to Download)</th>
+            <th>Source</th>
+            <th>GEDC Version</th>
+            <th>Encoding</th>
+            <th>Submitter Name</th>
+            <th>Submitter Address</th>
+            <th>Number of Individuals</th>
+            <th>Number of Families</th>
+          </tr>
+        </table>
+
+      </div>
+
+      <hr>
+
+      <div class="upload">
+       
+        <h3>Upload File</h3>
+
+        <form id="addFile" method="POST" action="/upload" enctype="multipart/form-data">
+          <p>Upload a File:</p>
+          <div class="form-group">
+            <input name="uploadFile" type="file" required="true">
+          </div>
+          <button type="submit" class="btn btn-info">Upload File</button>
+        </form>
+
+      </div>
+
+      <hr>
+
+      <div>
+        <h3>Create GEDCOM</h3>
+
+        <form id="createGEDCOM">
+          <div class="form-group">
+            <label>Filename</label>
+            <input type="text" class="form-control" placeholder="Filename" required="true" id="fileName">
+          </div>
+
+          <div class="form-group">
+            <label>Submitter Name</label>
+            <input type="text" class="form-control" id="subname" placeholder="Submitter Name" required="true">
+          </div>
+
+          <div class="form-group">
+            <label>Submitter Address (*Optional)</label>
+            <input type="text" class="form-control" id="subaddress" placeholder="Submitter Address">
+          </div>
+
+          <button type="submit" class="btn btn-info">Create GEDCOM</button>
+        </form>
+
+      </div>
+
+      <hr>
+        <h3>Add Individual</h3>  
+        
+        <form id="addIndividual">
+          
+          <div class="form-group">
+            <label>Filename</label>
+            <select id="getFile" id="filename" class="form-control" required="true">
+              <option value="" selected disabled hidden>Select a File</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Given Name</label>
+            <input type="text" class="form-control" id="givenName" placeholder="Given Name">
+          </div>
+
+          <div class="form-group">
+            <label>Surname</label>
+            <input type="text" class="form-control" id="surname" placeholder="Surname">
+          </div>
+
+          <button type="submit" id="addIndividualSubmit" class="btn btn-info">Add Indiviudal</button>
+        </form>
+
+      <hr>
+
+      <div class="genList">
+        <h3>Get Descendants</h3>
+
+        <form id="getDescendants">
+          <div class="form-group">
+            <label>Filename</label>
+            <select id="getFileDescendants" class="form-control" required="true">
+              <option value="" selected disabled hidden>Select a File</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Given Name</label>
+            <input type="text" class="form-control" id="givenNameDesc" placeholder="Given Name">
+          </div>
+
+          <div class="form-group">
+            <label>Surname</label>
+            <input type="text" class="form-control" id="surnameDesc" placeholder="Surname">
+          </div>
+
+          <div class="form-group">
+            <label>Max Generation</label>
+            <input type="number" class="form-control" id="maxGenDesc" placeholder="Max Generation">
+          </div>
+
+          <button type="submit" class="btn btn-info">Get Descendants</button>
+          <p id="descStatus">Status:</p>
+
+          <label>Descendants</label>
+          <table id="descTable" class="table table-striped table-bordered table-hover table-condensed">
+            <tr>
+              <th>Individuals</th>
+            </tr>
+          </table>
+        </form>
+
+      </div>
+
+      <hr>
+
+      <div class="genList">
+        <h3>Get Ancestors</h3>
+
+        <form id="getAncestors">
+          <div class="form-group">
+            <label>Filename</label>
+            <select id="getFileAncestors" class="form-control" required="true">
+              <option value="" selected disabled hidden>Select a File</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Given Name</label>
+            <input type="text" class="form-control" id="givenNameAnc" placeholder="Given Name">
+          </div>
+
+          <div class="form-group">
+            <label>Surname</label>
+            <input type="text" class="form-control" id="surnameAnc" placeholder="Surname">
+          </div>
+
+          <div class="form-group">
+            <label>Max Generation</label>
+            <input type="number" class="form-control" id="maxGenAnc" placeholder="Max Generation">
+          </div>
+
+          <button type="submit" class="btn btn-info">Get Ancestors</button>
+          <p id="ancStatus">Status:</p>
+
+          <label>Ancestors</label>
+          <table id="ancTable" class="table table-striped table-bordered table-hover table-condensed">
+            <tr>
+              <th>Individuals</th>
+            </tr>
+          </table>
+        </form>
+
+      </div>
+
+      <hr>
+
+      <div class="db-panel">
+        <h1>Database Panel</h1>
+        <form id="load-db">
+          <button type="submit" id="store-files" class="btn btn-info">Store All Files</button>
+          <p id="load-db-status">Status:</p>
+        </form>
+
+        <form id="clear-db">
+          <button type="submit" class="btn btn-info">Clear All Data</button>
+          <p id="clear-db-status">Status:</p>
+        </form>
+
+         <form id="db-status">
+          <button type="submit" class="btn btn-info">Display DB Status</button>
+          <p id="db-status-status">Status:</p>
+        </form>
+
+        <hr>
+
+        <h1>Custom Queries</h1>
+        <button class="btn btn-info" style="margin-bottom: 10px;" id="help-button">Help</button>
+
+        <div id="help-panel" class="modal-help">
+
+          <div class="modal-content-help">
+            <span class="close-help">&times;</span>
+            
+
+            <div class="container">
+              <h3>For Custom Queries:</h3>
+              <div id="table-file" class="table table-striped table-bordered table-hover table-condensed">
+                <table> 
+                  <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>NULL</th>
+                    <th>KEY</th>
+                    <th>DEFAULT</th>
+                    <th>EXTRA</th>
+                  </tr>
+                  <tr>
+                    <th>file_id</th>
+                    <th>int (11)</th>
+                    <th>NO</th>
+                    <th>PRI</th>
+                    <th>NULL</th>
+                    <th>auto_increment</th>
+                  </tr>
+                  <tr>
+                    <th>file_Name</th>
+                    <th>varchar (60)</th>
+                    <th>NO</th>
+                    <th></th>
+                    <th>NULL</th>
+                    <th></th>
+                  </tr>
+                  <tr>
+                    <th>source</th>
+                    <th>varchar (250)</th>
+                    <th>NO</th>
+                    <th></th>
+                    <th>NULL</th>
+                    <th></th>
+                  </tr>
+                  <tr>
+                    <th>version</th>
+                    <th>varchar (10)</th>
+                    <th>NO</th>
+                    <th></th>
+                    <th>NULL</th>
+                    <th></th>
+                  </tr>
+                  <tr>
+                    <th>encoding</th>
+                    <th>varchar (10)</th>
+                    <th>NO</th>
+                    <th></th>
+                    <th>NULL</th>
+                    <th></th>
+                  </tr>
+                  <tr>
+                    <th>sub_name</th>
+                    <th>varchar (62)</th>
+                    <th>NO</th>
+                    <th></th>
+                    <th>NULL</th>
+                    <th></th>
+                  </tr>
+                  <tr>
+                    <th>sub_addr</th>
+                    <th>varchar (256)</th>
+                    <th>YES</th>
+                    <th></th>
+                    <th>NULL</th>
+                    <th></th>
+                  </tr>
+                  <tr>
+                    <th>num_individuals</th>
+                    <th>int (11)</th>
+                    <th>YES</th>
+                    <th></th>
+                    <th>0</th>
+                    <th></th>
+                  </tr>
+                  <tr>
+                    <th>num_families</th>
+                    <th>int (11)</th>
+                    <th>YES</th>
+                    <th></th>
+                    <th>0</th>
+                    <th></th>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div id="table-individual" class="table table-striped table-bordered table-hover table-condensed">
+               <table> 
+                <tr>
+                  <th>Field</th>
+                  <th>Type</th>
+                  <th>NULL</th>
+                  <th>KEY</th>
+                  <th>DEFAULT</th>
+                  <th>EXTRA</th>
+                </tr>
+                <tr>
+                  <th>ind_id</th>
+                  <th>int (11)</th>
+                  <th>NO</th>
+                  <th>PRI</th>
+                  <th>NULL</th>
+                  <th>auto_increment</th>
+                </tr>
+                <tr>
+                  <th>surname</th>
+                  <th>varchar (256)</th>
+                  <th>NO</th>
+                  <th></th>
+                  <th>NULL</th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <th>given_name</th>
+                  <th>varchar (256)</th>
+                  <th>NO</th>
+                  <th></th>
+                  <th>NULL</th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <th>sex</th>
+                  <th>varchar (1)</th>
+                  <th>YES</th>
+                  <th></th>
+                  <th>NULL</th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <th>fam_size</th>
+                  <th>int (11)</th>
+                  <th>NO</th>
+                  <th></th>
+                  <th>0</th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <th>source_file</th>
+                  <th>int (11)</th>
+                  <th>YES</th>
+                  <th>MUL</th>
+                  <th>NULL</th>
+                  <th></th>
+                </tr>
+              </table>
+            </div>
+
+          </div>
+
+        </div>
+
+        <form id="custom-query">
+          <div class="form-group">
+            <label>Queries</label>
+
+            <select id="getQuery" class="form-control" required="true">
+              <option value="" selected disabled hidden>Select a Query</option>
+              <option value="1">Sort By Surname</option>
+              <option value="2">Select All Individuals From Given File</option>
+              <option value="3">Organize By Gender</option>
+              <option value="4">Seach All With First Name</option>
+              <option value="5">Select All With Surname</option>
+            </select>
+          </div>
+
+          <div style="padding-top: 10px;" class="form-group">
+            <label>File:</label>
+            <select id="getFileDatabase" class="form-control">
+              <option value="" selected disabled hidden>Select a File (Only for option 2)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Given Name:</label>
+            <input type="text" class="form-control" id="custom-query-given" placeholder="Given Name (Only for option 4)">
+          </div>
+
+          <div class="form-group">
+            <label>Surname:</label>
+            <input type="text" class="form-control" id="custom-query-surname" placeholder="Surname (Only for option 5)">
+          </div>
+
+          <button type="submit" id="execute-query" class="btn btn-info">Execute Query</button>
+        </form>
+
+        <form id="custom-query-field">
+          <div class="form-group">
+            <label style="padding-top: 10px;">SELECT</label>
+            <input type="text" class="form-control" id="custom-query-input" placeholder="Custom Select Query">
+          </div>
+
+          <button type="submit" id="execute-query-custom" class="btn btn-info">Execute Query</button>
+        </form>
+
+        <p id="query-status">Status:</p>
+          
+        <label style="padding-top: 10px;">Results</label>
+        <table id="query-table" class="table table-striped table-bordered table-hover table-condensed">
+          <tr>
+            <th>Given Name</th>
+            <th>Surname</th>
+            <th>Sex</th>
+            <th>Family Size</th>
+            <th>File</th>
+          </tr>
+        </table>
+
+      </div>
+
+      <hr>
+      
+      <div class="footer">
+        <p> 2018 &copy; Daniel Mil </p>    
+      </div>
+    
+    </div>
+    <!-- Leave me at the bottom of body -->
+    <script src="index.js"></script>
+</body>
+</html>

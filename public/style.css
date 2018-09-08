@@ -1,0 +1,273 @@
+* {
+  margin: 0px; 
+}
+
+@font-face {
+  font-family: Lato;
+  src: url(../fonts/Lato-Hairline.ttf);
+}
+
+
+body, html {
+    height: 100%; 
+  /*  font-family:  Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif; */ 
+    font-family: Lato !important; 
+    color: #FFFFFF; 
+    padding: 0px;
+    margin: 0px; 
+}
+
+.bg { 
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)
+    ), url("./images/background.png");
+  height: 500px; 
+  width: 100%; 
+  opacity: 0.6; 
+  border: 0px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; 
+}
+
+.container-own {
+  width: 800px; 
+  position: relative;
+  left: 50%;
+  margin-left: -400px; 
+  color: black;
+}
+
+.bg h1 {
+  text-decoration: none;
+  font-size: 80px;
+  text-align: center;
+  color: #FFFFFF;  
+  opacity: 1 !important; 
+  padding-top: 30px;  
+}
+
+.bg h2 {
+  text-decoration: none;
+  font-size: 30px;
+  text-align: center;
+  color: #FFFFFF;  
+  opacity: 1 !important; 
+  padding-top: 30px; 
+  padding-left: 100px;
+  padding-right: 100px; 
+}
+
+.bg nav {
+  text-align: center;
+}
+
+.bg ul {
+  list-style: none; 
+  padding-top: 40px; 
+  margin-right: 70px; 
+  font-size: 23px;  
+  color: #FFFFFF;
+}
+
+#clear {
+  margin-top: 40px; 
+}
+
+.status-panel {
+  margin-top: 40px; 
+  width: 800px; 
+  overflow-y: scroll; 
+  overflow-x: scroll;
+}
+
+.view-panel {
+  margin-top: 40px; 
+  max-height: 412px; 
+  max-width: 800px; 
+  overflow-y: scroll; 
+  overflow-x: scroll; 
+}
+
+.log-panel {
+  max-height: 376px; 
+  width: 120%; 
+  overflow-y: scroll;
+  max-width: 800px;
+  overflow-x: scroll;  
+}
+
+.genList {
+  max-height: 800px; 
+  max-width: 800px; 
+  overflow-y: scroll; 
+  overflow-x: scroll; 
+}
+
+.db-panel {
+  max-height: 1200px; 
+  max-width: 800px; 
+  overflow-y: scroll; 
+  overflow-x: scroll; 
+}
+
+.container p {
+  text-align: center;
+  margin-top: 90px;
+  font-size: 21px; 
+  font-weight: bold;
+  color: #D3D3D3;
+  line-height: 35px; 
+}
+
+.footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0; 
+  height: 40px; 
+  padding-top: 40px; 
+  text-align: center;
+}
+
+@media only screen and (max-width: 870px) {
+  .bg { 
+    height: 800px; 
+  }
+}
+
+@media only screen and (max-width: 586px) {
+  .bg { 
+    height: 1050px; 
+  }
+  .bg h2 {
+    padding-left: 20px;
+    padding-right: 20px; 
+  }
+}
+
+@media only screen and (max-width: 815px) {
+  .container-own {
+    width: 500px; 
+    margin-left: -250px; 
+  }
+  .status-panel {
+    max-width: 500px;  
+  }
+
+  .view-panel {
+    max-width: 500px; 
+  }
+
+  .log-panel {
+    max-width: 500px;  
+  }
+
+  .genList {
+    max-width: 500px; 
+  }
+}
+
+
+@media only screen and (max-width: 515px) {
+  .container-own {
+    width: 350px; 
+    margin-left: -175px; 
+  }
+  .status-panel {
+    max-width: 350px;  
+  }
+
+  .view-panel {
+    max-width: 350px; 
+  }
+
+  .log-panel {
+    max-width: 350px;  
+  }
+
+  .genList {
+    max-width: 350px; 
+  }
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    color: black;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: black;
+    float: left;
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 40px; 
+}
+
+.close:hover{
+  font-size: 29px; 
+  background-color: white; 
+}
+
+.modal-content p{
+  float: left;
+  margin-left: -80px; 
+}
+
+
+.modal-help {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content-help {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close-help {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-help:hover,
+.close-help:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

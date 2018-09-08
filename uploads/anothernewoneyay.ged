@@ -1,0 +1,16 @@
+0 HEAD
+1 SOUR DanielMilGEDCOMAPI
+1 GEDC
+2 VERS 1.00
+2 FORM LINEAGE-LINKED
+1 CHAR ASCII
+1 SUBM @U1@
+0 @U1@ SUBM
+1 NAME daniel
+0 @I1@ INDI
+1 NAME brianna /amenta/
+0 @I2@ INDI
+1 NAME daniel /mil/
+0 @I3@ INDI
+1 NAME lionel /messi/
+0 TRLR
