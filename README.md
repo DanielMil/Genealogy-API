@@ -1,1 +1,1 @@
-# Genealogy-API
+This API was developed as part of a semester-long programming assignment. The GEDCOM parser is written completely in C. The server is written using Node.js, data stored with a MySql database and a Javascript front-end.
